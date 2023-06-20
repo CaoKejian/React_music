@@ -1,8 +1,8 @@
-import Discover from '@/views/discover'
-import {RouteObject} from 'react-router-dom'
-const routes: RouteObject[] =[
+import Discover from '@/views'
+import { RouteObject } from 'react-router-dom'
+const routes: RouteObject[] = [
   {
-    path:'',element:<Discover />
+    path: '/discover', element: <Discover />
   }
 ]
 

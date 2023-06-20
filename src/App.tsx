@@ -1,11 +1,13 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
 import routes from './router';
+import DownLoad from './views/download';
 
 function App() {
   return (
     <div>
-      {useRoutes(routes)}
+      <DownLoad name={'colin'} age={20}  />
+      <div className='main'>{useRoutes(routes)}</div>
     </div>
   );
 }
