@@ -2,11 +2,14 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import '@/assets/css/reset.css'
 import 'normalize.css'
+import {HashRouter} from 'react-router-dom'
 import App from '@/App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 root.render(
-  <App />
+  <HashRouter>
+    <App />
+  </HashRouter>
 );
