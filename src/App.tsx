@@ -1,6 +1,6 @@
 import React from 'react';
 import { useRoutes } from 'react-router-dom';
-import routes from './router';
+import routes from './router/route';
 import DownLoad from './views/download';
 
 function App() {

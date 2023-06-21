@@ -1,8 +1,8 @@
 import React from 'react'
 
 interface IProps {
-  name: string
-  age: number
+  name?: string
+  age?: number
   height?: number
 }
 
