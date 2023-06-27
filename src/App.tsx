@@ -11,7 +11,7 @@ function App() {
         <Link to="/focus">我的关注</Link>
         <Link to="/download">下载客户端</Link>
       </div>
-      <Suspense fallback="loading...">
+      <Suspense fallback="">
         <div className='main'>{useRoutes(routes)}</div>
       </Suspense>
     </div>
