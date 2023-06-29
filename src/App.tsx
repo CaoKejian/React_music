@@ -12,6 +12,7 @@ function App() {
     <div className='wrapper'>
       <Header />
       <Suspense fallback="">
+   
         <div className='main'>{useRoutes(routes)}</div>
       </Suspense>
       <Footer />

@@ -1,0 +1,19 @@
+.wrapper{
+  width: 100%;
+  height: 285px;
+  background-image: url("http://p1.music.126.net/gCPF0oJzCNQv7irhQBq0iw==/109951168704639919.jpg?imageView&blur=40x20"); 
+  background-size: 6000px; 
+  background-position: center center; 
+  .imgItem{
+    width: 1000px;
+    height: 100%;
+    margin: 0 auto;
+    >img{
+      width: 1000px;
+      margin: 0 auto;
+      height: 100%;
+      background-size: cover;
+    }
+  }
+
+}

@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import hyRequest from '@/service'
-
+import s from './index.module.scss'
 interface IProps {
   children?: ReactNode
 }
@@ -28,12 +28,12 @@ const Recommend: FC<IProps> = () => {
     }).then(res => {
       setBanners(res.banners)
     })
-  })
+  }, [])
   return (
-    <div>
+    <div className={s.wrapper}>
       {
         banners.map((item, index) => {
-          return <div key={index}>
+          return <div className={s.imgItem} key={index}>
             <img src={item.imageUrl} alt="" />
           </div>
         })
