@@ -7,9 +7,13 @@ const counterSlice = createSlice({
     count: 100,
     message: 'colin',
   },
-  reducers: {}
+  reducers: {
+    changeMessage(state, { payload }) {
+      state.message = payload
+    }
+  }
 })
 
 
-
+export const { changeMessage } = counterSlice.actions
 export default counterSlice.reducer

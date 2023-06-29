@@ -1,8 +1,8 @@
-import React, { Suspense } from 'react';
+import { Suspense } from 'react';
 import { Link, useRoutes } from 'react-router-dom';
 import routes from './router/route';
-import { useSelector, shallowEqual } from 'react-redux'
-import store, { useAppSelevtor } from './store';
+import { shallowEqualApp, useAppDispatch, useAppSelevtor } from './store';
+import { changeMessage } from './store/modules/counter';
 
 // type state = typeof store.getState
 // type FnReturnType = ReturnType<state>
@@ -15,7 +15,11 @@ function App() {
   const state = useAppSelevtor((state) => ({
     count: state.counter.count,
     message: state.counter.message
-  }), shallowEqual)
+  }), shallowEqualApp)
+  const dispatch = useAppDispatch()
+  const handleChangeMessage = () => {
+    dispatch(changeMessage('哈哈哈哈'))
+  }
   return (
     <div>
       <div className="nav">
@@ -26,6 +30,7 @@ function App() {
       </div>
       <h2>当前计数：{state.count}</h2>
       <h2>当前消息：{state.message}</h2>
+      <button onClick={() => handleChangeMessage()}>修改message</button>
       <Suspense fallback="">
         <div className='main'>{useRoutes(routes)}</div>
       </Suspense>
