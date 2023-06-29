@@ -10,7 +10,9 @@
   align-items: center;
   line-height: 68px;
   cursor: pointer;
+  
   >a{
+    position: relative;
     color: #cccccc;
     padding: 0 18px;
     font-size: 14px;
@@ -19,6 +21,15 @@
       color: white;
       transition: all .2s ease-in;
     }
+    .icon{
+      position: absolute;
+      bottom: -4px;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+  .active{
+    background:#000000;
   }
   .logoname{
     color: white;
@@ -29,6 +40,7 @@
     &:hover{
       background: #242424;
     }
+   
   }
   >img{
     width: 32px;
@@ -39,7 +51,7 @@
     display: flex;
     position: relative;
     .search{
-      margin-left: 120px;
+      margin-left: 40px;
       width: 200px;
     }
     >a{
@@ -54,4 +66,8 @@
     }
   }
   
+}
+.divider{
+  height: 5px;
+  background: #c20c0c;
 }
