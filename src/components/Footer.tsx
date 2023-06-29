@@ -7,7 +7,7 @@ interface IProps {
 
 const Footer: FC<IProps> = () => {
   return (
-    <div>Footer</div>
+    <div>Footer底部</div>
   )
 }
 

@@ -9,7 +9,7 @@ import routes from './router/route';
 function App() {
 
   return (
-    <div>
+    <div className='wrapper'>
       <Header />
       <Suspense fallback="">
         <div className='main'>{useRoutes(routes)}</div>
