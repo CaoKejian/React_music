@@ -5,7 +5,7 @@ import hyRequest from '@/service'
 interface IProps {
   children?: ReactNode
 }
- interface IBannerRoot {
+interface IBannerRoot {
   imageUrl: string
   targetId: number
   adid: any
@@ -32,9 +32,11 @@ const Recommend: FC<IProps> = () => {
   return (
     <div>
       {
-        banners.map((item,index) => {
-          return <div key={index}>{item.imageUrl}</div>
-        }) 
+        banners.map((item, index) => {
+          return <div key={index}>
+            <img src={item.imageUrl} alt="" />
+          </div>
+        })
       }
     </div>
   )

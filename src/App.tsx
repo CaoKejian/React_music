@@ -14,7 +14,8 @@ function App() {
   // }), shallowEqual)
   const state = useAppSelevtor((state) => ({
     count: state.counter.count,
-    message: state.counter.message
+    message: state.counter.message,
+    direction: state.counter.direction
   }), shallowEqualApp)
   const dispatch = useAppDispatch()
   const handleChangeMessage = () => {
@@ -30,6 +31,7 @@ function App() {
       </div>
       <h2>当前计数：{state.count}</h2>
       <h2>当前消息：{state.message}</h2>
+      <h2>当前方向：{state.direction}</h2>
       <button onClick={() => handleChangeMessage()}>修改message</button>
       <Suspense fallback="">
         <div className='main'>{useRoutes(routes)}</div>
