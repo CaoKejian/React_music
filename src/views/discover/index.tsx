@@ -1,4 +1,4 @@
-import { memo, Suspense } from 'react'
+import React,{ memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
 import { NavLink, Outlet } from 'react-router-dom'
 import s from './index.module.scss'
@@ -25,15 +25,17 @@ const Discover: FC<IProps> = () => {
         <div className={s.item}>
           {
             Object.entries(mapHub).map(([key,value]) => {
-              return  <><NavLink
-              onClick={() => barClick()}
-              className={({ isActive }) => {
-                return isActive ? `${s.active}` : undefined
-              }}
-              key={key} to={value}>
-              {key}
-            </NavLink>
-            </>
+              return  <React.Fragment key={key}>
+              <NavLink
+                onClick={() => barClick()}
+                className={({ isActive }) => {
+                  return isActive ? `${s.active}` : undefined;
+                }}
+                to={value}
+              >
+                {key}
+              </NavLink>
+            </React.Fragment>
             })
           }
         </div>

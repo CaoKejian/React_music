@@ -30,7 +30,7 @@ const Header: FC<IProps> = () => {
         <Link to="/" className={s.logoname}>Colin音乐</Link>
         {
           Object.entries(mapHub).map(([key, value]) => {
-            return <><NavLink
+            return <React.Fragment key={key}><NavLink
               onClick={() => barClick()}
               className={({ isActive }) => {
                 return isActive ? `${s.active}` : undefined
@@ -41,7 +41,7 @@ const Header: FC<IProps> = () => {
                 <CaretUpOutlined className={s.icon} style={{ color: '#c20c0c' }} />
               )}
             </NavLink>
-            </>
+            </React.Fragment>
           })
         }
         <div className={s.rightdiv}>

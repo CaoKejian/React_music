@@ -10,11 +10,15 @@ const TopBanner: FC<IProps> = () => {
   const {banners} = useAppSelevtor((state)=>({
     banners: state.recommend.banners
   }))
+  console.log(banners);
+  
   return (
     <div className={s.wrapper}>
       {
-        banners.map(item => {
-          return <div>{item}</div>
+        banners.map((item,index) => {
+          return <div className={s.imgItem} key={index}>
+            <img src={item.imageUrl} alt="" />
+          </div>
         })
       }
     </div>
