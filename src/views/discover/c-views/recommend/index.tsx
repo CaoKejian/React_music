@@ -9,12 +9,12 @@ interface IProps {
 }
 
 
+
 const Recommend: FC<IProps> = () => {
   const dispatch = useAppDispatch()
   useEffect(() => {
     dispatch(fetchBannerAction())
   }, [dispatch])
-
   return (
     <div className={s.wrapper}>
       <TopBanner />

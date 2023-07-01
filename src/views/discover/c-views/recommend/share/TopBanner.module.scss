@@ -4,17 +4,41 @@
   background-image: url("http://p1.music.126.net/gCPF0oJzCNQv7irhQBq0iw==/109951168704639919.jpg?imageView&blur=40x20"); 
   background-size: 6000px; 
   background-position: center center; 
-  .imgItem{
+  .auto{
     width: 1000px;
-    height: 100%;
     margin: 0 auto;
-    // position: relative;
+    position: relative;
+    .floatPic{
+      position: absolute;
+      top: 0;
+      z-index: 20;
+      right: 0px;
+      width: 254px;
+      height: 285px;
+      background: url('https://s2.music.126.net/style/web2/img/index/download.png?bb318d46d0c374159ee36fc9c2db18af') no-repeat 0 0;
+    }
+    .button{
+      position: absolute;
+      z-index: 20;
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+    }
+    .button1{
+      left: -90px;
+    }
+    .button2{
+      right: -90px;
+    }
+  }
+  .imgItem{
     >img{
-      width: 1000px;
+      background: red;
+      width: calc(1000px - 254px);
       margin: 0 auto;
-      height: 100%;
+      height: 285px;
       background-size: cover;
-      // position: absolute;
+      float: left;
     }
   }
 }
