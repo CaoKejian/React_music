@@ -1,5 +1,5 @@
-import React, { memo } from 'react'
-import type { FC, ReactNode } from 'react'
+import React, { memo, useRef } from 'react'
+import type { FC, ReactNode,ElementRef } from 'react'
 import s from './TopBanner.module.scss'
 import { useAppSelevtor } from '@/store'
 import { Carousel } from 'antd';
@@ -18,12 +18,11 @@ const TopBanner: FC<IProps> = () => {
   }),
     shallowEqual
   )
-  console.log(banners);
-
+  const bannerRef = useRef<ElementRef<typeof Carousel>>(null)
   return (
     <div className={s.wrapper}>
       <div className={s.auto}>
-        <Carousel autoplay className={s.autoPic}>
+        <Carousel ref={bannerRef} autoplay className={s.autoPic}>
           {
             banners.map((item, index) => {
               return <div className={s.imgItem} key={index}>
@@ -32,10 +31,8 @@ const TopBanner: FC<IProps> = () => {
             })
           }
         </Carousel>
-        <LeftOutlined className={`${s.button} ${s.button1}`} style={{fontSize:'54px',color:'#fff'}}/>
-        <RightOutlined className={`${s.button} ${s.button2}`} style={{fontSize:'54px',color:'#fff'}}/>
-        {/* <button className={`${s.button} ${s.button1}`}>1</button> */}
-        {/* <button className={`${s.button} ${s.button2}`}>2</button> */}
+        <LeftOutlined onClick={() => bannerRef.current?.prev()} className={`${s.button} ${s.button1}`} style={{ fontSize: '54px', color: '#fff' }} />
+        <RightOutlined onClick={() => bannerRef.current?.next()} className={`${s.button} ${s.button2}`} style={{ fontSize: '54px', color: '#fff' }} />
         <div className={s.floatPic}></div>
       </div>
     </div>
