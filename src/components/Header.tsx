@@ -21,13 +21,9 @@ const Header: FC<IProps> = () => {
   }
   const barClick = () => {
     console.log(1);
-
   }
-
   const location = useLocation();
-  console.log(location.pathname);
-
-  return (
+  return (<>
     <div className={s.wrapper}>
       <div className={s.content}>
         <img src={logo} alt="" />
@@ -55,9 +51,10 @@ const Header: FC<IProps> = () => {
           <a href='/'>登录</a>
         </div>
       </div>
-      <div className={s.divider}>111</div>
-    </div>
 
+    </div>
+    <div className={s.divider}></div>
+  </>
   )
 }
 

@@ -1,0 +1,26 @@
+.main{
+  height: 31px;
+  line-height: 31px;
+  font-size: 12px;
+  display: block;
+  background: #c20c0c;
+  .item{
+    width: 744px;
+    margin: 0 auto;
+    padding-left: 100px;
+    >a{
+      color: white;
+      margin-right: 30px;
+      padding: 2px 12px;
+      &:hover{
+        background: #9b0909;
+        border-radius: 24px;
+        transition: all .3s ease;
+      }
+    }
+  }
+}
+.active{
+  background: #9b0909;
+  border-radius: 24px;
+}

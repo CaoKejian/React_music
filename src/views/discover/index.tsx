@@ -1,21 +1,42 @@
-import React, { memo, Suspense } from 'react'
+import { memo, Suspense } from 'react'
 import type { FC, ReactNode } from 'react'
-import { Link, Outlet } from 'react-router-dom'
+import { NavLink, Outlet } from 'react-router-dom'
+import s from './index.module.scss'
 
 interface IProps {
   children?: ReactNode
 }
 
 const Discover: FC<IProps> = () => {
+  const mapHub: Record<string, string> = {
+    "推荐": "/discover/recommend",
+    "排行榜": "/discover/ranking",
+    "歌单": "/discover/songs",
+    "主播电台": "/discover/djradio",
+    "歌手": "/discover/artist",
+    "新碟上架": "/discover/album",
+  }
+  const barClick = () => {
+    console.log(1);
+  }
   return (
     <div>
-      <div>
-        <Link to="/discover/recommend">推荐</Link>
-        <Link to="/discover/ranking">排行榜</Link>
-        <Link to="/discover/songs">歌单</Link>
-        <Link to="/discover/djradio">主播电台</Link>
-        <Link to="/discover/artist">歌手</Link>
-        <Link to="/discover/album">新碟上架</Link>
+      <div className={s.main}>
+        <div className={s.item}>
+          {
+            Object.entries(mapHub).map(([key,value]) => {
+              return  <><NavLink
+              onClick={() => barClick()}
+              className={({ isActive }) => {
+                return isActive ? `${s.active}` : undefined
+              }}
+              key={key} to={value}>
+              {key}
+            </NavLink>
+            </>
+            })
+          }
+        </div>
       </div>
       <Suspense fallback="">
         <Outlet />

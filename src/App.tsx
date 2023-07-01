@@ -3,8 +3,7 @@ import { useRoutes } from 'react-router-dom';
 import Footer from './components/Footer';
 import Header from './components/Header';
 import routes from './router/route';
-
-
+import s from './App.module.scss'
 
 function App() {
 
@@ -12,8 +11,7 @@ function App() {
     <div className='wrapper'>
       <Header />
       <Suspense fallback="">
-   
-        <div className='main'>{useRoutes(routes)}</div>
+        <div className={s.main}>{useRoutes(routes)}</div>
       </Suspense>
       <Footer />
     </div>
