@@ -1,7 +1,7 @@
 .wrapper{
   width: 100%;
   height: 285px;
-  background-image: url("http://p1.music.126.net/gCPF0oJzCNQv7irhQBq0iw==/109951168704639919.jpg?imageView&blur=40x20"); 
+  // background-image: url("http://p1.music.126.net/gCPF0oJzCNQv7irhQBq0iw==/109951168704639919.jpg?imageView&blur=40x20"); 
   background-size: 6000px; 
   background-position: center center; 
   .auto{
@@ -38,7 +38,6 @@
   }
   .imgItem{
     >img{
-      background: red;
       width: calc(1000px - 254px);
       margin: 0 auto;
       height: 285px;

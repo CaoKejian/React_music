@@ -1,8 +1,10 @@
-import React, { memo, useRef } from 'react'
-import type { FC, ReactNode,ElementRef } from 'react'
+import React, { memo, useEffect, useLayoutEffect, useRef, useState } from 'react'
+import type { FC, ReactNode, ElementRef } from 'react'
 import s from './TopBanner.module.scss'
 import { useAppSelevtor } from '@/store'
 import { Carousel } from 'antd';
+import { flushSync } from 'react-dom';
+
 import {
   RightOutlined,
   LeftOutlined,
@@ -19,10 +21,27 @@ const TopBanner: FC<IProps> = () => {
     shallowEqual
   )
   const bannerRef = useRef<ElementRef<typeof Carousel>>(null)
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [bgImgUrl, setBgImgUrl] = useState('');
+
+  useLayoutEffect(() => {
+    const imgUrl = banners[currentIndex]?.imageUrl;
+    if (imgUrl) {
+      setBgImgUrl(imgUrl + '?imageView&blur=40x20');
+    }
+  }, [banners, currentIndex]);
+
+  const handleAfterChange = (current: number, next: number) => {
+    setCurrentIndex(next);
+  };
+
   return (
-    <div className={s.wrapper}>
+    <div className={s.wrapper} style={{ backgroundImage: `url('${bgImgUrl}')` }}>
       <div className={s.auto}>
-        <Carousel ref={bannerRef} autoplay className={s.autoPic}>
+        <Carousel ref={bannerRef} autoplay className={s.autoPic} effect="fade" easing="ease-out"
+          autoplaySpeed={3000}
+          dots={false}
+          beforeChange={handleAfterChange}>
           {
             banners.map((item, index) => {
               return <div className={s.imgItem} key={index}>
