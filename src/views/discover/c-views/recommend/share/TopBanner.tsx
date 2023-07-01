@@ -2,6 +2,7 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import s from './TopBanner.module.scss'
 import { useAppSelevtor } from '@/store'
+import { shallowEqual } from 'react-redux'
 interface IProps {
   children?: ReactNode
 }
@@ -9,7 +10,9 @@ interface IProps {
 const TopBanner: FC<IProps> = () => {
   const {banners} = useAppSelevtor((state)=>({
     banners: state.recommend.banners
-  }))
+  }),
+    shallowEqual
+  )
   console.log(banners);
   
   return (
