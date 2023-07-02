@@ -10,6 +10,7 @@ import {
   CaretRightOutlined,
 } from '@ant-design/icons';
 import { Carousel } from 'antd'
+import NewDocs from '@/components/NewDocs'
 
 interface IProps {
   children?: ReactNode
@@ -48,12 +49,22 @@ const ContentLeft: FC<IProps> = () => {
               dots={false}
             >
               {
-                newDosc.map((item, index) => {
-                  return <h1 key={index}>{item.company}</h1>
+                [0,1].map((item, index) => {
+                    return (
+                     <div key={index}>
+                       <div className={s.autoPicItem}>
+                        {
+                          newDosc.slice(item*5,(item+1)*5).map(x => {
+                            return <NewDocs key={x.picId} data={x}/>
+                          })
+                        }
+                      </div>
+                     </div>
+                    )
                 })
               }
             </Carousel>
-          </div>
+          </div> 
           <CaretLeftOutlined onClick={handlePrev} className={`${s.button} ${s.button1}`} style={{ fontSize: '18px', color: '#898989' }} />
           <CaretRightOutlined onClick={handleNext}  className={`${s.button} ${s.button2}`} style={{ fontSize: '18px', color: '#898989' }} />
         </div>

@@ -44,10 +44,18 @@
       .button2 {
         right: 0;
       }
-      .banner{
-        // width: 1000px;
+
+      .banner {
         width: 100%;
         overflow: hidden;
+
+        .autoPic {
+          .autoPicItem {
+            display: flex;
+            justify-content: space-between;
+            padding: 0 24px;
+          }
+        }
       }
     }
   }
