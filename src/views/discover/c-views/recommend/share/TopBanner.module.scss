@@ -8,6 +8,30 @@
     width: 1000px;
     margin: 0 auto;
     position: relative;
+    .dots {
+      position: absolute;
+      bottom: 0;
+      left: calc((1000px - 254px) / 2);
+      transform: translateX(-50%);
+      display: flex;
+  
+      > li {
+        margin: 0 10px 10px 10px;
+        >span {
+          display: inline-block;
+          width: 8px;
+          height: 8px;
+          border-radius: 50%;
+          cursor: pointer;
+          background: #c7beb8;
+  
+          &:hover,
+          &.active {
+            background: #c40c0c;
+          }
+        }
+      }
+    }
     .floatPic{
       position: absolute;
       top: 0;
