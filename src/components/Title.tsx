@@ -4,13 +4,16 @@ import {
   ArrowRightOutlined,SmileTwoTone
 } from '@ant-design/icons';
 import s from './Title.module.scss'
+import { Link } from 'react-router-dom';
 interface IProps {
   children?: ReactNode
   arr?: string[]
   title?:string
+  gotoRoute?:string
 }
 
-const Title: FC<IProps> = ({ title, arr }) => {
+const Title: FC<IProps> = (props) => {
+  const { title='默认标题', arr=[],gotoRoute='' } = props
   return (
     <div className={s.wrapper}>
       <div className={s.left}>
@@ -28,7 +31,7 @@ const Title: FC<IProps> = ({ title, arr }) => {
         </div>
       </div>
       <div className={s.right}>
-        <a href="/">更多</a>
+        <Link to={gotoRoute}>更多</Link>
         <ArrowRightOutlined style={{ fontSize: '10px', color: "#c10d0c" }} />
       </div>
     </div>

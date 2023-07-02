@@ -8,10 +8,10 @@ interface IProps {
 }
 
 const ContentLeft: FC<IProps> = () => {
-  const arr = ['华语','流行','摇滚','民谣','电子']
+  const TitleArr = ['华语','流行','摇滚','民谣','电子']
   return (
     <div className={s.wrapper}>
-      <Title arr={arr} title={'热门推荐'}></Title>
+      <Title arr={TitleArr} title='热门推荐' gotoRoute='/discover/songs'></Title>
     </div>
   )
 }
