@@ -17,8 +17,9 @@ interface IProps {
 
 const ContentLeft: FC<IProps> = () => {
   const TitleArr = ['华语', '流行', '摇滚', '民谣', '电子']
-  const { hotRecommends } = useAppSelevtor((state) => ({
-    hotRecommends: state.recommend.hotRecommend
+  const { hotRecommends,newDosc } = useAppSelevtor((state) => ({
+    hotRecommends: state.recommend.hotRecommend,
+    newDosc:state.recommend.newDosc
   }), shallowEqual)
   const bannerRef = useRef<ElementRef<typeof Carousel>>(null)
   const handlePrev = () => {
@@ -45,11 +46,10 @@ const ContentLeft: FC<IProps> = () => {
               autoplaySpeed={3000}
               speed={2000}
               dots={false}
-              // beforeChange={handleBeforeChange}
             >
               {
-                [1,2,3].map((item, index) => {
-                  return <h1 key={index}>{item}</h1>
+                newDosc.map((item, index) => {
+                  return <h1 key={index}>{item.company}</h1>
                 })
               }
             </Carousel>
