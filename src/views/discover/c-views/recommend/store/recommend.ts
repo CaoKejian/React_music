@@ -1,3 +1,4 @@
+import { IHotRecommend } from "@/react-app-env";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
 import { getBanner, getHotRecommend } from "../service/recommend";
 
@@ -24,19 +25,7 @@ interface IRecommendState {
     scm: string,
     bannerBizType: string
   }[]
-  hotRecommend: {
-    id: number
-    type: number
-    name: string
-    copywriter: string
-    picUrl: string
-    canDislike: boolean
-    trackNumberUpdateTime: number
-    playCount: number
-    trackCount: number
-    highQuality: boolean
-    alg: string
-  }[]
+  hotRecommend: IHotRecommend[]
 }
 const initialState: IRecommendState = {
   banners: [],

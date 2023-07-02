@@ -1,0 +1,79 @@
+.wrapper {
+  width: 140px;
+  height: 140px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  position: relative;
+
+  >img {
+    width: 100%;
+    height: 100%;
+  }
+
+  .cover {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-position: 0 0;
+    background-image: url('../assets/imgs/coverall.png');
+    background-repeat: no-repeat;
+
+    .info {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 10px;
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background-image: url('../assets/imgs/coverall.png');
+      background-position: 0 -537px;
+      color: #ccc;
+      font-size: 12px;
+      height: 27px;
+    }
+
+    .infoLeft {
+      display: flex;
+      align-items: center;
+      .headset {
+        margin-right: 5px;
+        width: 14px;
+        height: 14px;
+      }
+      .count {}
+    }
+
+    >i {
+      .play {
+        display: inline-block;
+        width: 16px;
+        height: 17px;
+        background-position: 0 0;
+      }
+    }
+  }
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  width: 21%;
+  margin-right: 3%;
+  cursor: pointer;
+
+  .bottom {
+    width: 140px;
+    font-size: 14px;
+    color: #000;
+    margin: 8px 0 46px 0;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}
