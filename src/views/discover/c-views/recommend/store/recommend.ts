@@ -1,12 +1,16 @@
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBanner } from "../service/recommend";
+import { getBanner, getHotRecommend } from "../service/recommend";
 
-export const fetchBannerAction = createAsyncThunk('banners',async (args,{dispatch}) => {
+export const fetchBannerAction = createAsyncThunk('banners', async (args, { dispatch }) => {
   const res = await getBanner()
   dispatch(changebannersAction(res.banners))
 })
+export const fetchHotRecommendAction = createAsyncThunk('hotRecommend', async (args, { dispatch }) => {
+  const res = await getHotRecommend(8)
+  dispatch(changeHotRecommendAction(res.result))
+})
 interface IRecommendState {
-  banners:{
+  banners: {
     imageUrl: string,
     targetId: number,
     adid: any,
@@ -20,21 +24,39 @@ interface IRecommendState {
     scm: string,
     bannerBizType: string
   }[]
+  hotRecommend: {
+    id: number
+    type: number
+    name: string
+    copywriter: string
+    picUrl: string
+    canDislike: boolean
+    trackNumberUpdateTime: number
+    playCount: number
+    trackCount: number
+    highQuality: boolean
+    alg: string
+  }[]
 }
-const initialState:IRecommendState = {
-  banners:[]
+const initialState: IRecommendState = {
+  banners: [],
+  hotRecommend: []
 }
 const recommendSlice = createSlice({
-  name:'recommend',
-  initialState:initialState,
-  reducers:{
-    changebannersAction:function(state,{payload}){
+  name: 'recommend',
+  initialState: initialState,
+  reducers: {
+    changebannersAction: function (state, { payload }) {
       state.banners = payload
+    },
+    changeHotRecommendAction: function (state, { payload }) {
+      state.hotRecommend = payload
     }
   }
 })
 // 1.定义reducers里的action方法
 // 2.createAsyncThunk异步请求数据
 // 3.dispatch(方法action)更替数据
-export const {changebannersAction} = recommendSlice.actions
+export const { changebannersAction } = recommendSlice.actions
+export const { changeHotRecommendAction } = recommendSlice.actions
 export default recommendSlice.reducer

@@ -21,11 +21,11 @@ const Title: FC<IProps> = (props) => {
         <h3>{title}</h3>
         <div className={s.keyWords}>
           {
-            arr?.map(item => {
-              return <>
-                <span>{item}</span>
-                <span>|</span>
-              </>
+            arr?.map((item,index) => {
+              return <React.Fragment key={index}>
+                <span >{item}</span>
+                <span >|</span>
+              </React.Fragment>
             })
           }
         </div>
