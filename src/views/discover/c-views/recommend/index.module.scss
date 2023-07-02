@@ -1,3 +1,9 @@
-.wrapper{
-  
+.wrapper {
+  .content {
+    width: 998px;
+    display: flex;
+    margin: 0 auto;
+    border: 1px solid #d3d3d3;
+    border-top: none;
+  }
 }
