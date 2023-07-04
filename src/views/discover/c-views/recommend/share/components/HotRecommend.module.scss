@@ -1,0 +1,13 @@
+.hotRecommend {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 16px 6px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+  :nth-child(4),
+  :nth-child(8) {
+    margin-right: 0;
+  }
+}
