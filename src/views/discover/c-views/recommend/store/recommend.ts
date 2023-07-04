@@ -1,6 +1,6 @@
 import { IHotRecommend } from "@/react-app-env";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBanner, getHotRecommend, getNewDosc } from "../service/recommend";
+import { getBanner, getHotRecommend, getNewDosc, getRanking } from "../service/recommend";
 
 export const fetchBannerAction = createAsyncThunk('banners', async (args, { dispatch }) => {
   const res = await getBanner()
@@ -13,6 +13,17 @@ export const fetchHotRecommendAction = createAsyncThunk('hotRecommend', async (a
 export const fetchNewDoscAction = createAsyncThunk('newDosc', async (args, { dispatch }) => {
   const res = await getNewDosc(20)
   dispatch(changeNewDocsAction(res.albums))
+})
+export const fetchRankingAction = createAsyncThunk('rankings', async (args, { dispatch }) => {
+  const promises: Promise<any>[] =[]
+  const rankingIds = [19723756, 3779629, 2884035]
+  for(const id of rankingIds) {
+    promises.push(getRanking(id))
+  }
+  Promise.all(promises).then(res => {
+    const paylists = res.map(i => i.playlist)
+    dispatch(changeupRankingAction(paylists))
+  })
 })
 interface IRecommendState {
   banners: {
@@ -30,12 +41,14 @@ interface IRecommendState {
     bannerBizType: string
   }[]
   hotRecommend: IHotRecommend[]
-  newDosc:any[]
+  newDosc: any[]
+  rankings: any[],
 }
 const initialState: IRecommendState = {
   banners: [],
   hotRecommend: [],
-  newDosc:[]
+  newDosc: [],
+  rankings:[]
 }
 const recommendSlice = createSlice({
   name: 'recommend',
@@ -49,6 +62,9 @@ const recommendSlice = createSlice({
     },
     changeNewDocsAction: function (state, { payload }) {
       state.newDosc = payload
+    },
+    changeupRankingAction: function (state, { payload }) {
+      state.rankings = payload
     }
   }
 })
@@ -58,4 +74,5 @@ const recommendSlice = createSlice({
 export const { changebannersAction } = recommendSlice.actions
 export const { changeHotRecommendAction } = recommendSlice.actions
 export const { changeNewDocsAction } = recommendSlice.actions
+export const { changeupRankingAction } = recommendSlice.actions
 export default recommendSlice.reducer

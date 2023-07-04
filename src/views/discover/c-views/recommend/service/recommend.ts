@@ -24,3 +24,12 @@ export function getNewDosc(limit=20) {
     }
   })
 }
+
+export function getRanking(id:number) {
+  return hyRequest.get({
+    url: "/playlist/detail",
+    params:{
+      id:id
+    }
+  })
+}
