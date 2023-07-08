@@ -27,7 +27,9 @@ const Header: FC<IProps> = () => {
     <div className={s.wrapper}>
       <div className={s.content}>
         <img src={logo} alt="" />
-        <Link to="/" className={s.logoname}>Colin音乐</Link>
+        <Link to="/" className={s.logoname}>
+          <span className={s.fake}>网易云</span>
+          Colin音乐</Link>
         {
           Object.entries(mapHub).map(([key, value]) => {
             return <React.Fragment key={key}><NavLink
