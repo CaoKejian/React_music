@@ -13,7 +13,7 @@ const ContentRight: FC<IProps> = () => {
     <div className={s.wrapper}>
       <RightTopLogin />
       <div className={s.box1}>
-        <LittleTitle title={'入驻歌手'} isShow={true}/>
+        <LittleTitle title={'入驻歌手'} isShow={true} toLink='#/discover/artist'/>
       </div>
     </div>
   )

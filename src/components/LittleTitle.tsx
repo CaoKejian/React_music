@@ -2,22 +2,24 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import s from './LittleTitle.module.scss'
 import { SwapRightOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 
 interface IProps {
   children?: ReactNode
-  title: String
+  title: string
   isShow?: Boolean
+  toLink?:string
 }
 
 const LittleTitle: FC<IProps> = (props) => {
-  const { title, isShow } = props
+  const { title, isShow,toLink } = props
   return (
     <div className={s.wrapper}>
       <span className={s.title}>{title}</span>
       {
         isShow ?
           <div>
-            <span className={s.right}>查看全部</span>
+            <a href={toLink} className={s.right}>查看全部</a>
             <SwapRightOutlined style={{ fontSize: '12px' }} />
           </div> : <div></div>
       }
