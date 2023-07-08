@@ -1,0 +1,24 @@
+.imgTitle{
+  height: 120px;
+  font-size: 12px;
+  background: linear-gradient(to bottom,#fdfdfd,#e2e2e2);
+  >p{
+    width: 205px;
+    color: #666666;
+    margin: 0 auto;
+    padding: 16px 0;
+    line-height: 22px;
+  }
+  >a{
+    display: block;
+    width: 100px;
+    height: 31px;
+    background: linear-gradient(to bottom,#e41820,#bb060b);
+    border-radius: 4px;
+    margin: 0 auto;
+    line-height: 31px;
+    text-align: center;
+    color: #fff;
+    text-shadow: 0 1px 0 #8a060b;
+  }
+}

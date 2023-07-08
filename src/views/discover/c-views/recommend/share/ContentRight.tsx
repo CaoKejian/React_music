@@ -1,7 +1,8 @@
 import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import s from './contentRight.module.scss'
-import { Link } from 'react-router-dom'
+import RightTopLogin from './components/RightTopLogin'
+import LittleTitle from '@/components/LittleTitle'
 
 interface IProps {
   children?: ReactNode
@@ -10,11 +11,11 @@ interface IProps {
 const ContentRight: FC<IProps> = () => {
   return (
     <div className={s.wrapper}>
-      <div className={s.imgTitle}>
-        <p>登录网易云音乐，可以享受无限收藏的乐趣，并且无限同步到手机</p>
-        <Link to={'/'}>用户登录</Link>
+      <RightTopLogin />
+      <div className={s.box1}>
+        <LittleTitle title={'入驻歌手'} isShow={true}/>
       </div>
-      ContentRight</div>
+    </div>
   )
 }
 
