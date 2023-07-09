@@ -2,7 +2,6 @@ import React, { memo } from 'react'
 import type { FC, ReactNode } from 'react'
 import s from './LittleTitle.module.scss'
 import { SwapRightOutlined } from '@ant-design/icons';
-import { Link } from 'react-router-dom';
 
 interface IProps {
   children?: ReactNode

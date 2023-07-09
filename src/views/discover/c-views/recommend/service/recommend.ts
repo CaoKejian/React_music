@@ -33,3 +33,13 @@ export function getRanking(id:number) {
     }
   })
 }
+
+export function getHotArtist(offset:number,limit:number) {
+  return hyRequest.get({
+    url: "/top/artists",
+    params:{
+      offset:offset,
+      limit:limit
+    }
+  })
+}

@@ -1,6 +1,6 @@
 import { IHotRecommend } from "@/react-app-env";
 import { createAsyncThunk, createSlice } from "@reduxjs/toolkit";
-import { getBanner, getHotRecommend, getNewDosc, getRanking } from "../service/recommend";
+import { getBanner, getHotArtist, getHotRecommend, getNewDosc, getRanking } from "../service/recommend";
 
 export const fetchBannerAction = createAsyncThunk('banners', async (args, { dispatch }) => {
   const res = await getBanner()
@@ -25,6 +25,12 @@ export const fetchRankingAction = createAsyncThunk('rankings', async (args, { di
     dispatch(changeupRankingAction(paylists))
   })
 })
+
+export const fetchHotArtistAction = createAsyncThunk('hotArtist',async(args,{dispatch}) => {
+  const res = await getHotArtist(0,5)
+  console.log(res);
+  dispatch(changeHotArtistAction(res.artists))
+})
 interface IRecommendState {
   banners: {
     imageUrl: string,
@@ -43,12 +49,14 @@ interface IRecommendState {
   hotRecommend: IHotRecommend[]
   newDosc: any[]
   rankings: any[],
+  hotArtists:any[]
 }
 const initialState: IRecommendState = {
   banners: [],
   hotRecommend: [],
   newDosc: [],
-  rankings:[]
+  rankings:[],
+  hotArtists:[]
 }
 const recommendSlice = createSlice({
   name: 'recommend',
@@ -65,6 +73,9 @@ const recommendSlice = createSlice({
     },
     changeupRankingAction: function (state, { payload }) {
       state.rankings = payload
+    },
+    changeHotArtistAction: function(state,{payload}){
+      state.hotArtists = payload
     }
   }
 })
@@ -75,4 +86,5 @@ export const { changebannersAction } = recommendSlice.actions
 export const { changeHotRecommendAction } = recommendSlice.actions
 export const { changeNewDocsAction } = recommendSlice.actions
 export const { changeupRankingAction } = recommendSlice.actions
+export const { changeHotArtistAction } = recommendSlice.actions
 export default recommendSlice.reducer
