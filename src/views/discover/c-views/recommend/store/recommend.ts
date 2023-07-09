@@ -28,9 +28,9 @@ export const fetchRankingAction = createAsyncThunk('rankings', async (args, { di
 
 export const fetchHotArtistAction = createAsyncThunk('hotArtist',async(args,{dispatch}) => {
   const res = await getHotArtist(0,5)
-  console.log(res);
   dispatch(changeHotArtistAction(res.artists))
 })
+
 interface IRecommendState {
   banners: {
     imageUrl: string,
@@ -49,14 +49,14 @@ interface IRecommendState {
   hotRecommend: IHotRecommend[]
   newDosc: any[]
   rankings: any[],
-  hotArtists:any[]
+  hotArtists:any[],
 }
 const initialState: IRecommendState = {
   banners: [],
   hotRecommend: [],
   newDosc: [],
   rankings:[],
-  hotArtists:[]
+  hotArtists:[],
 }
 const recommendSlice = createSlice({
   name: 'recommend',
@@ -76,7 +76,8 @@ const recommendSlice = createSlice({
     },
     changeHotArtistAction: function(state,{payload}){
       state.hotArtists = payload
-    }
+    },
+  
   }
 })
 // 1.定义reducers里的action方法

@@ -20,7 +20,7 @@ const Ranking: FC<IProps> = () => {
       <div className={s.content}>
         {
           rankings.map(item => {
-            return <div className={s.item} key={item}>
+            return <div className={s.item} key={item.coverImgUrl}>
               <div className={s.header}>
                 <div className={s.image}>
                   <img src={imgFormat(item.coverImgUrl, 80)} alt="" />
