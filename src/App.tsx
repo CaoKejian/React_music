@@ -4,6 +4,7 @@ import Footer from './components/Footer';
 import Header from './components/Header';
 import routes from './router/route';
 import s from './App.module.scss'
+import PlayBar from './views/player/PlayBar';
 
 function App() {
 
@@ -14,6 +15,7 @@ function App() {
         <div className={s.main}>{useRoutes(routes)}</div>
       </Suspense>
       <Footer />
+      <PlayBar />
     </div>
   );
 }

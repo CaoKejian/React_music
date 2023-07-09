@@ -1,0 +1,6 @@
+  .ant-slider-track {
+    background: #c70c0c !important;
+  }
+.ant-slider .ant-slider-handle::after{
+  box-shadow: none;
+}
