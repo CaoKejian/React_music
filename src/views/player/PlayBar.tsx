@@ -7,11 +7,19 @@ import {
 } from '@ant-design/icons';
 import { Slider } from 'antd';
 import './style.css'
+import { useAppSelevtor } from '@/store';
+import { log } from 'console';
+import { Link } from 'react-router-dom';
 interface IProps {
   children?: ReactNode
 }
 
 const PlayBar: FC<IProps> = () => {
+  const { currentSong } = useAppSelevtor((state) => ({
+    currentSong: state.player.currentSong
+  }))
+  console.log(currentSong);
+  
   return (<>
     <div className={s.fake}>
       <div className={s.wrapper}>
@@ -25,9 +33,12 @@ const PlayBar: FC<IProps> = () => {
             <img src="https://s4.music.126.net/style/web2/img/default/default_album.jpg
 " alt="" />
             <div className={s.box}>
+              <Link to={'/player'}>
+                <img className={s.image} src={currentSong.al.picUrl} alt="" />
+              </Link>
               <div className={s.info}>
-                <div className={s.songName}>日不落</div>
-                <div className={s.songSinger}>蔡依林</div>
+                <div className={s.songName}>{currentSong.name}</div>
+                <div className={s.songSinger}>{currentSong.ar[0].name}</div>
               </div>
               <div className={s.process}>
                 <div className={s.pro}>

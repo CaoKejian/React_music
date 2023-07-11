@@ -5,7 +5,7 @@
   bottom: 0;
   left: 0;
   right: 0;
-  // z-index: 99;
+  z-index: 99;
   background: linear-gradient(to bottom, #4a4a4a, #2a2929);
   transition: all .3s ease;
   position: relative;
@@ -39,7 +39,9 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 2px 0;
-
+        .image{
+          
+        }
         .info {
           margin-left: 14px;
           font-size: 13px;
@@ -78,8 +80,6 @@
 
           .true {
             width: 100%;
-
-
           }
 
           .icon {
