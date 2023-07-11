@@ -39,9 +39,6 @@
         flex-direction: column;
         justify-content: space-between;
         padding: 2px 0;
-        .image{
-          
-        }
         .info {
           margin-left: 14px;
           font-size: 13px;
@@ -117,7 +114,7 @@
         }
       }
 
-      >img {
+      .image {
         width: 34px;
         height: 35px;
         border-radius: 4px;

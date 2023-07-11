@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useEffect, useRef, useState } from 'react'
 import type { FC, ReactNode } from 'react'
 import s from './PlayBar.module.scss'
 import {
@@ -8,34 +8,62 @@ import {
 import { Slider } from 'antd';
 import './style.css'
 import { useAppSelevtor } from '@/store';
-import { log } from 'console';
 import { Link } from 'react-router-dom';
+import { shallowEqual } from 'react-redux';
+import { getPlayerUrl } from '@/utils/handle-player';
 interface IProps {
   children?: ReactNode
 }
 
 const PlayBar: FC<IProps> = () => {
+  const [isPlaying, setIsPlaying] = useState(false)
+  const [progress, setProgress] = useState(0)
+  const audioRef = useRef<HTMLAudioElement>(null)
   const { currentSong } = useAppSelevtor((state) => ({
     currentSong: state.player.currentSong
-  }))
-  console.log(currentSong);
-  
+  }), shallowEqual)
+  useEffect(() => {
+    console.log(audioRef.current);
+    
+    if (!audioRef.current) return
+    audioRef.current.src = getPlayerUrl(currentSong.id)
+    audioRef.current?.play().then(() => {
+      setIsPlaying(true)
+      console.log('歌曲播放成功');
+    }).catch(error => {
+      setIsPlaying(false)
+      console.log('歌曲播放失败');
+    })
+  }, [currentSong])
+  // 音乐播放进度处理
+  function handleTimeUpdate() {
+    // 1.获取当前的时间
+    const currentTime = audioRef.current!.currentTime
+
+    
+  }
+   /** 播放功能的交互 */
+   function handlePlayBtnClick() {
+    // const isPaused = audioRef.current!.paused
+    isPlaying
+      ? audioRef.current?.pause()
+      : audioRef.current?.play().catch(err=>setIsPlaying(false))
+    setIsPlaying(!isPlaying)
+  }
   return (<>
     <div className={s.fake}>
       <div className={s.wrapper}>
         <div className={s.content}>
-          <div className={s.play}>
+          <div className={s.play} >
             <StepBackwardOutlined style={{ color: "#fff", fontSize: '28px' }} />
-            <PlayCircleFilled style={{ color: "#fff", fontSize: '36px' }} />
+            <PlayCircleFilled style={{ color: "#fff", fontSize: '36px' }} onClick={handlePlayBtnClick}/>
             <StepForwardOutlined style={{ color: "#fff", fontSize: '28px' }} />
           </div>
           <div className={s.audio}>
-            <img src="https://s4.music.126.net/style/web2/img/default/default_album.jpg
-" alt="" />
+            <Link to={'/discover/player'}>
+              <img className={s.image} src={currentSong.al.picUrl} alt="" />
+            </Link>
             <div className={s.box}>
-              <Link to={'/player'}>
-                <img className={s.image} src={currentSong.al.picUrl} alt="" />
-              </Link>
               <div className={s.info}>
                 <div className={s.songName}>{currentSong.name}</div>
                 <div className={s.songSinger}>{currentSong.ar[0].name}</div>
@@ -44,11 +72,9 @@ const PlayBar: FC<IProps> = () => {
                 <div className={s.pro}>
                   <div className={s.true}>
                     <Slider
-                      step={0.5}
-                      tooltip={{ formatter: null }}
+                      value={progress}
                     />
                   </div>
-                  {/* <div className={s.icon}></div> */}
                 </div>
                 <div className={s.time}>
                   <span>00:00</span>/00:00
@@ -69,6 +95,7 @@ const PlayBar: FC<IProps> = () => {
         </div>
       </div>
     </div>
+    <audio ref={audioRef} onTimeUpdate={handleTimeUpdate}></audio>
   </>
   )
 }
